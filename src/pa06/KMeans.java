@@ -45,8 +45,16 @@ public class KMeans{
             String line = scnr.nextLine();
             String[] newline=line.split("\\s+");
             double[] p1 = new double[2];
-            for(int i=0;i<2;i++){
-                p1[i] = Integer.parseInt(newline[i]);
+            int count=0;
+            for(int i=0;i<newline.length;i++){
+                if(newline[i].length()==0){
+
+                }
+                else{
+                    p1[count] = Double.parseDouble(newline[i]);
+                    count=count+1;
+                }
+                
             }
             Sample sample=new Sample(p1);
             OriginalData.add(sample);
