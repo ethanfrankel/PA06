@@ -1,3 +1,4 @@
+package pa06;
 import java.util.ArrayList;
 import java.util.Random;
 public class Cluster {
