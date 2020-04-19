@@ -6,7 +6,7 @@ public class Cluster {
 	ArrayList<Sample> clusterArray;
 	ArrayList<Sample> sampleArray;
 	int numClusters;
-	
+
     //Step 1 is to assign random cluster points
     public Cluster(ArrayList<Sample> list, int numbercluster,ArrayList<Sample> clusters){
     	this.clusterArray = clusters;
@@ -26,5 +26,5 @@ public class Cluster {
             System.out.println(x.getvalue(1));
         }
     }
-    
+
 }

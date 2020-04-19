@@ -56,7 +56,7 @@ public class KMeans{
                     p1[count] = Double.parseDouble(newline[i]);
                     count=count+1;
                 }
-                
+
             }
             Sample sample=new Sample(p1);
             OriginalData.add(sample);

@@ -10,13 +10,13 @@ import java.util.*;
 
 public class Sample {
 	ArrayList<Double> sample;
-	
+
 	//regular constructor for filling the arraylist of samples from file
 	public Sample(double[] values) {
 		this.sample = new ArrayList<Double>();
 		for (int i=0; i<values.length; i++) {
 			sample.add(values[i]);
-		}	
+		}
 	}
 	//default constructor if you want to use difference class
 	public Sample() {
@@ -28,7 +28,7 @@ public class Sample {
 	double getlength(){
 		return sample.size();
 	}
-	
+
 	double difference(Sample s1, Sample s2) {
 		//difference between samples
 		System.out.println(s1);
@@ -41,7 +41,7 @@ public class Sample {
 		}
 		return Math.sqrt(SumofSquare);
 	}
-	
+
 	public String toString() {
 		String string = "(";
 	    for (int i = 0; i < this.sample.size(); i++) {
