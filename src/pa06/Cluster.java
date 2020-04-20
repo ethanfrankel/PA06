@@ -25,6 +25,9 @@ public class Cluster {
           * Each cluster will have a randomly assigned clusterPoint that will be the beginning
           * basis for each. We add @param clusterPoint to @param clusters because it will be
           * the first point that we can test distance to other points with. 
+          * @param index helps us generate a random number from 0 to however many elements
+          * there are in our overall list of Samples.
+          *
           */
         }
         //a test to see that clusters have been randomly chosen
