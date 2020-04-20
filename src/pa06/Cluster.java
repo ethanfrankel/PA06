@@ -26,5 +26,48 @@ public class Cluster {
             System.out.println(x.getvalue(1));
         }
     }
+	
+	
+	
+	
+	public double difference(Sample s1, Sample s2) {
+
+		//difference between samples
+
+		System.out.println(s1);
+
+		System.out.println(s2);
+
+		double SumofSquare=0;
+
+		for(int i=0;i<s2.getlength();i++){
+
+			double sum=s1.getvalue(i)-s2.getvalue(i);
+
+			sum=sum*sum;
+
+			SumofSquare=SumofSquare+sum;
+
+		}
+
+		return Math.sqrt(SumofSquare);
+
+	}
+    
+    public void calcClustMean() {
+    	double distance=0;
+    	int numOfAdds = 0; 
+    	int i = 0;
+    	for (i=0;i<clusterArray.size()-1;i++) {
+    		distance+=difference(clusterArray.get(i),clusterArray.get(i+1));
+    		numOfAdds++;
+    	}
+    	
+    	this.clustMean = distance / numOfAdds;
+    }
+    
+    public void addSample(Sample sample) {
+    	this.sampleArray.add(sample);
+    }
 
 }
