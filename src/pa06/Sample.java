@@ -1,5 +1,3 @@
-package pa06;
-
 import java.util.ArrayList;
 import java.util.*;
 /**
@@ -10,17 +8,17 @@ import java.util.*;
 
 public class Sample {
 	ArrayList<Double> sample;
-	public int whichCluster; 
+	int loc;
 	//regular constructor for filling the arraylist of samples from file
 	public Sample(double[] values) {
 		this.sample = new ArrayList<Double>();
 		for (int i=0; i<values.length; i++) {
 			sample.add(values[i]);
-		}
+		}	
 	}
 	//default constructor if you want to use difference class
 	public Sample() {
-
+		
 	}
 	double getvalue(int i){
 		return sample.get(i);
@@ -28,33 +26,23 @@ public class Sample {
 	double getlength(){
 		return sample.size();
 	}
-
+	void setloc(Sample s1,int index){
+		s1.loc=index;
+	}
+	int  getloc(){
+		return this.loc;
+	}
+	
 	double difference(Sample s1, Sample s2) {
 		//difference between samples
-		System.out.println(s1);
-		System.out.println(s2);
-		double SumofSquare=0;
-		for(int i=0;i<s2.getlength();i++){
-			double sum=s1.getvalue(i)-s2.getvalue(i);
-			sum=sum*sum;
-			SumofSquare=SumofSquare+sum;
-		}
-		return Math.sqrt(SumofSquare);
+		double x=s1.getvalue(0)-s2.getvalue(0);
+		x=x*x;
+		double y=s1.getvalue(1)-s2.getvalue(1);
+		y=y*y;
+		double z=x+y;
+		z=Math.sqrt(z);
+		return z;
 	}
-	 public Sample whichClosest (ArrayList<Sample> arb) {			//Proposed Part 6
-		    	int i=0;
-		    	double apart = 1000;
-		    	Sample closest = new Sample();
-		    	while (arb.get(i) != null) {
-		    		if (difference(this,arb.get(i)) < apart) {
-		    			apart = difference(this,arb.get(i));
-		    			closest = arb.get(i);
-		    		}
-		    	}
-		    	
-		    	return closest;
-		    }
-		     
 	public String toString() {
 		String string = "(";
 	    for (int i = 0; i < this.sample.size(); i++) {
