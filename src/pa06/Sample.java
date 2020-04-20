@@ -41,7 +41,20 @@ public class Sample {
 		}
 		return Math.sqrt(SumofSquare);
 	}
-
+	 public Sample whichClosest (ArrayList<Sample> arb) {			//Proposed Part 6
+		    	int i=0;
+		    	double apart = 1000;
+		    	Sample closest = new Sample();
+		    	while (arb.get(i) != null) {
+		    		if (difference(this,arb.get(i)) < apart) {
+		    			apart = difference(this,arb.get(i));
+		    			closest = arb.get(i);
+		    		}
+		    	}
+		    	
+		    	return closest;
+		    }
+		     
 	public String toString() {
 		String string = "(";
 	    for (int i = 0; i < this.sample.size(); i++) {
