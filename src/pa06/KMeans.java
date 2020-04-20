@@ -63,19 +63,24 @@ public class KMeans{
         }
         return "ERROR";
     }
-   /*
-	    public Sample isClosest (Sample arb) {			//Proposed Part 6
-	    	Sample s = new Sample();
-	    	double track = 1000;
+  
+	public void reclassify() {	//part 7,8
+	    	int numOfClusters = this.clusters.size();
+	    	ArrayList<Sample> store = this.OriginalData;
 	    	int i=0;
-	    	for (i=0;i<this.OriginalData.size();i++) { 
-	    		if (difference(arb,this.OriginalData.get(i)) < track && (arb.equals(this.OriginalData) != true)) {
-	    			track = difference(arb,this.OriginalData.get(i));
-	    			s = this.OriginalData.get(i);
-	    		}
+	    	double differentiation = 0;
+	    	ArrayList<Sample> clusterPoints = new ArrayList<Sample>();
+	    	for (i=0;i<this.clusters.size();i++) {
+	    		clusterPoints.add(this.clusters.get(i).clusterArray.get(0)); //get the clusterPoints in a list
 	    	}
 	    	
-	    	return s;
-	    }
-	     */
+	    	
+	    	
+	    	Cluster closest;//first element belongs to first cluster (the cluster that has the cluster point closest to the start)
+	    	while (store!=null)	{
+	    		 //has closest ClusterPoint
+	    		this.clusters.get(0).addSample(store.get(0).whichClosest(clusterPoints));
+	    		}
+	    		
+	    	}
 }
