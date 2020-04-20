@@ -10,7 +10,7 @@ import java.util.*;
 
 public class Sample {
 	ArrayList<Double> sample;
-
+	public int whichCluster; 
 	//regular constructor for filling the arraylist of samples from file
 	public Sample(double[] values) {
 		this.sample = new ArrayList<Double>();
