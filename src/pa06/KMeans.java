@@ -4,20 +4,33 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 public class KMeans{
+    /**
+    *@param OriginalData is the field that represents the original data (the entire 
+    * row of samples) that we later manipulated and placed into clusters.
+    *@param cluster is the list of clusters that will contain Samples 
+    */
     ArrayList<Sample> OriginalData;
     ArrayList<Sample> cluster= new ArrayList<Sample>();
     public KMeans() {
         this.OriginalData = new ArrayList<Sample>();
         this.cluster = new ArrayList<Sample>();
     }
+    //getter method
     public ArrayList<Sample> getClusters() {
         return this.cluster;
     }
+    //getter method
     public ArrayList<Sample> getOriginalData() {
         return this.OriginalData;
 	}
     public static void main(String[] args)throws FileNotFoundException {
-        Scanner console=new Scanner(System.in);
+        /**
+	*@param console will take the user data from the file location to be used for the set of Samples
+	*@param clusters will be the "k" value that the user chooses to be divided into k-means
+	*@param mean is the kmeans variable to get the original data and clusters
+	*@@param cluster1 is the first or only cluster depending on how many clusters are desired. 
+	*/
+	Scanner console=new Scanner(System.in);
         System.out.println("what is the file location e.g. C:/Users/redso/Desktop/s1-cb.txt");
         String location=console.nextLine();
         System.out.println("how many clusters");
@@ -29,8 +42,7 @@ public class KMeans{
         Cluster cluster1=new Cluster(OriginalData, clusters,cluster);
         ArrayList<ArrayList<Sample>> nest = new ArrayList<ArrayList<Sample>>();
         //we have an array list of array lists. the main branch represents the number of clusters. The branches of the brancehs represent the data grouped with that cluster
-        for(int f=0;f<clusters;f++){
-            nest.add(new ArrayList<Sample>());
+        for(int f=0;f<clusters;f++){            nest.add(new ArrayList<Sample>());
         }
         //iterate 100 times
         for(int iteration=0;iteration<100;iteration++){
@@ -45,6 +57,12 @@ public class KMeans{
         //print cluster final. 
         print(cluster);
     }
+	
+	/**
+	* @param location is the location of the file
+	* @param OriginalData is the set of Samples that we will use in the simulation
+	*/
+	//parses file and reads for double values to use as Samples
     public static String readFile(String location,ArrayList OriginalData) throws FileNotFoundException{
         //reads file and puts each sample into original data arraylist
         File names = new File(location);
@@ -68,8 +86,14 @@ public class KMeans{
         }
         return "ERROR";
     }
+	/**
+	* This method will reclassify points into clusters as necessary. It does so
+	* by using nested for loops to compare each clusterPoint to each Sample in the set so that the
+	* Sample closest to that clusterPoint will be placed in the correct cluster.
+	*
+	*/
     public static void reclassify(ArrayList<Sample> OriginalData,ArrayList<Sample> cluster,ArrayList<ArrayList<Sample>> nest){
-        for(int i=0;i<OriginalData.size();i++){
+	    for(int i=0;i<OriginalData.size();i++){
             double count = 0;
             int ClusterIndex = 0;
             for(int j=0;j<cluster.size();j++){
@@ -90,8 +114,13 @@ public class KMeans{
             ClusterIndex = 0;
         }
     }
+    /**
+    * This newCluster method will generate a new cluster in addition to the first one 
+    * and fill up the remaining slots in each ArrayList of Samples based initially on the 
+    * randomly generated clusterPoint, and then on the centroid which will be a Sample that 
+    * represents the average of all the Samples in that specific cluster. 
+    */
     public static void newCluster(ArrayList<ArrayList<Sample>> nest,ArrayList<Sample> cluster){
-        //set cluster to average
         for(int i=0;i<nest.size();i++){
             double sumx=0;
             double sumy=0;
@@ -109,6 +138,13 @@ public class KMeans{
         }
     
     }
+	/**
+	* This method will "print out the k-means simualtion by 
+	* showing us going through the clusters and demonstrating
+	* what Sample is assigned to what cluster based on its centroid or average value. 
+	* @param xcoord and @param ycoord are used to represent the doubles that make up
+	* the Sample. 
+	*/
     public static void print(ArrayList<Sample> cluster){
         for(int q=0;q<cluster.size();q++){
             double xcoord = cluster.get(q).getvalue(0);
